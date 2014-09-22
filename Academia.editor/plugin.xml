@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="Academia.presentation.AcademiaModelWizardID"
+            name="%_UI_AcademiaModelWizard_label"
+            class="Academia.presentation.AcademiaModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/AcademiaModelFile.gif">
+         <description>%_UI_AcademiaModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="Academia.presentation.AcademiaEditorID"
+            name="%_UI_AcademiaEditor_label"
+            icon="icons/full/obj16/AcademiaModelFile.gif"
+            extensions="academia"
+            class="Academia.presentation.AcademiaEditor"
+            contributorClass="Academia.presentation.AcademiaActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

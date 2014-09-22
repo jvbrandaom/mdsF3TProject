@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ACADEMIA UI
+Bundle-SymbolicName: Academia.ui; singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: Academia.ui.Activator
+Bundle-Vendor: GDMS
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.emf.edit,
+ org.eclipse.jet,
+ org.eclipse.jdt.core,
+ org.eclipse.jdt.launching,
+ advanse.acore.generator,
+ Academia,
+ Academia.diagram,
+ Academia.edit
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

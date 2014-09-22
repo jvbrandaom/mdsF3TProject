@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dcore:DDomain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:dcore="http://advanse.dc.ufscar.br/dcore" name="Academia">
+  <dFeatures name="Matricula">
+    <dAttributes name="id" typeName="int" identifier="true"/>
+    <dAttributes name="data" typeName="Date"/>
+    <dAssociations name="disciplina" lowerBound="1" upperBound="*" dTarget="//@dFeatures.6"/>
+    <dAssociations name="aluno" lowerBound="1" dTarget="//@dFeatures.1"/>
+  </dFeatures>
+  <dFeatures name="Aluno" dSourceAssociations="//@dFeatures.0/@dAssociations.1">
+    <dAttributes name="nome"/>
+    <dAttributes name="sobrenome"/>
+    <dAttributes name="id" typeName="int" identifier="true"/>
+    <dAssociations name="curso" lowerBound="1" dTarget="//@dFeatures.2"/>
+  </dFeatures>
+  <dFeatures name="Curso" dSourceAssociations="//@dFeatures.1/@dAssociations.0">
+    <dAttributes name="id" typeName="int" identifier="true"/>
+    <dAttributes name="nome"/>
+    <dAssociations name="grade" lowerBound="1" upperBound="*" dTarget="//@dFeatures.4"/>
+    <dAssociations name="departamento" dTarget="//@dFeatures.3"/>
+  </dFeatures>
+  <dFeatures name="Departamento" dSourceAssociations="//@dFeatures.4/@dAssociations.1 //@dFeatures.2/@dAssociations.1">
+    <dAttributes name="Nome"/>
+    <dAttributes name="id" typeName="int" identifier="true"/>
+    <dAssociations name="campus" dTarget="//@dFeatures.5"/>
+  </dFeatures>
+  <dFeatures name="Disciplina" dSourceAssociations="//@dFeatures.2/@dAssociations.0" dAlternativeFeatures="//@dFeatures.7 //@dFeatures.8">
+    <dAttributes name="id" typeName="int" identifier="true"/>
+    <dAttributes name="nome"/>
+    <dAssociations name="disciplinasSemestre" lowerBound="1" upperBound="*" dTarget="//@dFeatures.6"/>
+    <dAssociations name="departamento" lowerBound="1" dTarget="//@dFeatures.3"/>
+  </dFeatures>
+  <dFeatures name="Campus" dSourceAssociations="//@dFeatures.3/@dAssociations.0">
+    <dAttributes name="nome"/>
+    <dAttributes name="id" typeName="int" identifier="true"/>
+  </dFeatures>
+  <dFeatures name="DisciplinaSemestre" dSourceAssociations="//@dFeatures.0/@dAssociations.0 //@dFeatures.4/@dAssociations.0">
+    <dAttributes name="ano" typeName="int"/>
+    <dAttributes name="semestre" typeName="int"/>
+    <dAttributes name="id" typeName="int" identifier="true"/>
+  </dFeatures>
+  <dFeatures name="DisciplinaPaga" dSuperFeature="//@dFeatures.4">
+    <dAttributes name="preco" typeName="float"/>
+  </dFeatures>
+  <dFeatures name="DisciplinaGratis" dSuperFeature="//@dFeatures.4"/>
+</dcore:DDomain>

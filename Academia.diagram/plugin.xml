@@ -1,0 +1,850 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension point="org.eclipse.team.core.fileTypes" id="repo-ftype">
+      <?gmfgen generated="true"?>
+      <fileTypes type="text" extension="academia_diagram"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser" id="resource-factory">
+      <?gmfgen generated="true"?>
+      <parser
+         type="academia_diagram"
+         class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
+      </parser>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors" id="gmf-editor">
+      <?gmfgen generated="true"?>
+      <editor
+         id="Academia.diagram.part.AcademiaDiagramEditorID"
+         name="%editorName"
+         icon="icons/obj16/AcademiaDiagramFile.gif"
+         extensions="academia_diagram"
+         default="true"
+         class="Academia.diagram.part.AcademiaDiagramEditor"
+         matchingStrategy="Academia.diagram.part.AcademiaMatchingStrategy"
+         contributorClass="Academia.diagram.part.AcademiaDiagramActionBarContributor">
+      </editor>
+   </extension>
+   
+   <extension point="org.eclipse.ui.contexts" id="ui-context">
+      <?gmfgen generated="true"?>
+      <context
+         description="%context.description"
+         id="Academia.diagram.ui.diagramContext"
+         name="%context.name"
+         parentId="org.eclipse.gmf.runtime.diagram.ui.diagramContext">
+      </context>
+   </extension>
+
+   <extension point="org.eclipse.ui.newWizards" id="creation-wizard">
+      <?gmfgen generated="true"?>
+  	  <wizard
+  	     name="%newWizardName"
+  	     icon="icons/obj16/AcademiaDiagramFile.gif"
+  	     category="org.eclipse.ui.Examples"
+  	     class="Academia.diagram.part.AcademiaCreationWizard"
+  	     id="Academia.diagram.part.AcademiaCreationWizardID">
+  	  	 <description>%newWizardDesc</description>  
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.popupMenus" id="init-diagram-action">
+      <?gmfgen generated="true"?>
+      <objectContribution
+            id="Academia.diagram.InitDiagram"
+            nameFilter="*.academia"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               label="%initDiagramActionLabel"
+               class="Academia.diagram.part.AcademiaInitDiagramFileAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="Academia.diagram.InitDiagramAction">
+         </action>
+      </objectContribution>
+   </extension>
+	
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders" id="global-actions">
+      <?gmfgen generated="true"?>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramGlobalActionHandlerProvider"
+         id="AcademiaPresentation">
+         <Priority name="Lowest"/>
+         <ViewId id="Academia.diagram.part.AcademiaDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="delete"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+               <GlobalActionId actionId="save"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="save">
+               </GlobalActionId>
+            </ElementType>        
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.ide.providers.DiagramIDEGlobalActionHandlerProvider"
+         id="AcademiaPresentationIDE">
+         <Priority name="Lowest"/>
+         <ViewId id="Academia.diagram.part.AcademiaDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="bookmark"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.render.providers.DiagramUIRenderGlobalActionHandlerProvider"
+            id="AcademiaRender">
+         <Priority name="Lowest"/>
+         <ViewId id="Academia.diagram.part.AcademiaDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="cut"/>
+               <GlobalActionId actionId="copy"/>
+               <GlobalActionId actionId="paste"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+   </extension>
+
+
+   <extension point="org.eclipse.core.runtime.preferences" id="prefs">
+      <?gmfgen generated="true"?>
+      <initializer class="Academia.diagram.preferences.DiagramPreferenceInitializer"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.preferencePages" id="prefpages">
+      <?gmfgen generated="true"?>
+      <page
+            id="Academia.diagram.general"
+            name="%prefpage.Academia.diagram.general"
+            class="Academia.diagram.preferences.DiagramGeneralPreferencePage">
+      </page>
+      <page
+            id="Academia.diagram.appearance"
+            name="%prefpage.Academia.diagram.appearance"
+            category="Academia.diagram.general"
+            class="Academia.diagram.preferences.DiagramAppearancePreferencePage">
+      </page>
+      <page
+            id="Academia.diagram.connections"
+            name="%prefpage.Academia.diagram.connections"
+            category="Academia.diagram.general"
+            class="Academia.diagram.preferences.DiagramConnectionsPreferencePage">
+      </page>
+      <page
+            id="Academia.diagram.printing"
+            name="%prefpage.Academia.diagram.printing"
+            category="Academia.diagram.general"
+            class="Academia.diagram.preferences.DiagramPrintingPreferencePage">
+      </page>
+      <page
+            id="Academia.diagram.rulersAndGrid"
+            name="%prefpage.Academia.diagram.rulersAndGrid"
+            category="Academia.diagram.general"
+            class="Academia.diagram.preferences.DiagramRulersAndGridPreferencePage">
+      </page>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor" id="prop-contrib">
+      <?gmfgen generated="true"?>
+      <propertyContributor
+            contributorId="Academia.diagram"
+            labelProvider="Academia.diagram.sheet.AcademiaSheetLabelProvider">
+         <propertyCategory category="domain"/>
+         <propertyCategory category="visual"/>
+         <propertyCategory category="extra"/>
+      </propertyContributor>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs" id="proptabs">
+      <?gmfgen generated="true"?>   
+      <propertyTabs contributorId="Academia.diagram">
+         <propertyTab
+             category="visual"
+             id="property.tab.AppearancePropertySection"
+             label="%tab.appearance"/>
+          <propertyTab
+             category="visual"
+             id="property.tab.DiagramPropertySection"
+             label="%tab.diagram"/>
+          <propertyTab
+             category="domain"
+             id="property.tab.domain"
+             label="%tab.domain"/>
+      </propertyTabs>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections" id="propsections">
+      <?gmfgen generated="true"?>   
+      <propertySections contributorId="Academia.diagram">
+         <propertySection id="property.section.ConnectorAppearancePropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ConnectionEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ConnectionAppearancePropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>
+         <propertySection id="property.section.ShapeColorAndFontPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ShapeEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection> 
+         <propertySection id="property.section.DiagramColorsAndFontsPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.DiagramColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>     
+         <propertySection id="property.section.RulerGridPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.grid.RulerGridPropertySection" 
+            tab="property.tab.DiagramPropertySection">
+         </propertySection>     
+         <propertySection
+            id="property.section.domain" 
+            tab="property.tab.domain"
+            class="Academia.diagram.sheet.AcademiaPropertySection">
+            <input type="org.eclipse.gmf.runtime.notation.View"/>
+            <input type="org.eclipse.gef.EditPart"/>
+            <input type="Academia.diagram.navigator.AcademiaAbstractNavigatorItem"/>
+         </propertySection>
+      </propertySections>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders" id="view-provider">
+      <?gmfgen generated="true"?>
+      <viewProvider class="Academia.diagram.providers.AcademiaViewProvider">
+         <Priority name="Lowest"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Academia"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2001,2002,2003,2004,2005,2006,2007,2008,2009,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022,3023,3024"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="4001"/>
+      </viewProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders" id="ep-provider">
+      <?gmfgen generated="true"?>
+      <editpartProvider class="Academia.diagram.providers.AcademiaEditPartProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.notation.Diagram" id="generated-diagram">
+            <method name="getType()" value="Academia"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-nodes">
+            <method name="getType()" value="2001,2002,2003,2004,2005,2006,2007,2008,2009,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3011,3012,3013,3014,3015,3016,3017,3018,3019,3020,3021,3022,3023,3024"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Edge" id="generated-links">
+            <method name="getType()" value="4001"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-labels">
+            <method name="getType()" value="5001,5005,5006,5010,5011,5015,5016,5020,5021,5025,5026,5030,5031,5035,5036,5040,5041,5002,5003,5004,5007,5008,5009,5012,5013,5014,5017,5018,5019,5022,5023,5024,5027,5028,5029,5032,5033,5034,5037,5038,5039"/>
+         </object>
+         <object class="org.eclipse.gmf.runtime.notation.Node" id="generated-compartments">
+            <method name="getType()" value="7001,7002,7003,7004,7005,7006,7007,7008,7009,7010,7011,7012,7013,7014,7015,7016"/>
+         </object>
+         <context views="generated-diagram,generated-nodes,generated-links,generated-labels,generated-compartments"/>
+      </editpartProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders" id="modelassist-provider">
+      <?gmfgen generated="true"?>
+      <modelingAssistantProvider class="Academia.diagram.providers.AcademiaModelingAssistantProvider">
+         <Priority name="Lowest"/>
+         <object class="Academia.diagram.edit.parts.APackageEditPart" id="APackage_1000"/>
+         <object class="Academia.diagram.edit.parts.AApplicationEditPart" id="AApplication_2001"/>
+         <object class="Academia.diagram.edit.parts.MatriculaEditPart" id="Matricula_2002"/>
+         <object class="Academia.diagram.edit.parts.AlunoEditPart" id="Aluno_2003"/>
+         <object class="Academia.diagram.edit.parts.CursoEditPart" id="Curso_2004"/>
+         <object class="Academia.diagram.edit.parts.DepartamentoEditPart" id="Departamento_2005"/>
+         <object class="Academia.diagram.edit.parts.CampusEditPart" id="Campus_2006"/>
+         <object class="Academia.diagram.edit.parts.DisciplinaSemestreEditPart" id="DisciplinaSemestre_2007"/>
+         <object class="Academia.diagram.edit.parts.DisciplinaPagaEditPart" id="DisciplinaPaga_2008"/>
+         <object class="Academia.diagram.edit.parts.DisciplinaGratisEditPart" id="DisciplinaGratis_2009"/>
+         <object class="Academia.diagram.edit.parts.AAttributeEditPart" id="AAttribute_3001"/>
+         <object class="Academia.diagram.edit.parts.AOperationEditPart" id="AOperation_3002"/>
+         <object class="Academia.diagram.edit.parts.AParameterEditPart" id="AParameter_3003"/>
+         <object class="Academia.diagram.edit.parts.AAttribute2EditPart" id="AAttribute_3004"/>
+         <object class="Academia.diagram.edit.parts.AOperation2EditPart" id="AOperation_3005"/>
+         <object class="Academia.diagram.edit.parts.AParameter2EditPart" id="AParameter_3006"/>
+         <object class="Academia.diagram.edit.parts.AAttribute3EditPart" id="AAttribute_3007"/>
+         <object class="Academia.diagram.edit.parts.AOperation3EditPart" id="AOperation_3008"/>
+         <object class="Academia.diagram.edit.parts.AParameter3EditPart" id="AParameter_3009"/>
+         <object class="Academia.diagram.edit.parts.AAttribute4EditPart" id="AAttribute_3010"/>
+         <object class="Academia.diagram.edit.parts.AOperation4EditPart" id="AOperation_3011"/>
+         <object class="Academia.diagram.edit.parts.AParameter4EditPart" id="AParameter_3012"/>
+         <object class="Academia.diagram.edit.parts.AAttribute5EditPart" id="AAttribute_3013"/>
+         <object class="Academia.diagram.edit.parts.AOperation5EditPart" id="AOperation_3014"/>
+         <object class="Academia.diagram.edit.parts.AParameter5EditPart" id="AParameter_3015"/>
+         <object class="Academia.diagram.edit.parts.AAttribute6EditPart" id="AAttribute_3016"/>
+         <object class="Academia.diagram.edit.parts.AOperation6EditPart" id="AOperation_3017"/>
+         <object class="Academia.diagram.edit.parts.AParameter6EditPart" id="AParameter_3018"/>
+         <object class="Academia.diagram.edit.parts.AAttribute7EditPart" id="AAttribute_3019"/>
+         <object class="Academia.diagram.edit.parts.AOperation7EditPart" id="AOperation_3020"/>
+         <object class="Academia.diagram.edit.parts.AParameter7EditPart" id="AParameter_3021"/>
+         <object class="Academia.diagram.edit.parts.AAttribute8EditPart" id="AAttribute_3022"/>
+         <object class="Academia.diagram.edit.parts.AOperation8EditPart" id="AOperation_3023"/>
+         <object class="Academia.diagram.edit.parts.AParameter8EditPart" id="AParameter_3024"/>
+         <context elements="APackage_1000,AApplication_2001,Matricula_2002,Aluno_2003,Curso_2004,Departamento_2005,Campus_2006,DisciplinaSemestre_2007,DisciplinaPaga_2008,DisciplinaGratis_2009,AAttribute_3001,AOperation_3002,AParameter_3003,AAttribute_3004,AOperation_3005,AParameter_3006,AAttribute_3007,AOperation_3008,AParameter_3009,AAttribute_3010,AOperation_3011,AParameter_3012,AAttribute_3013,AOperation_3014,AParameter_3015,AAttribute_3016,AOperation_3017,AParameter_3018,AAttribute_3019,AOperation_3020,AParameter_3021,AAttribute_3022,AOperation_3023,AParameter_3024"/>
+      </modelingAssistantProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders" id="icon-provider">
+      <?gmfgen generated="true"?>
+      <IconProvider class="Academia.diagram.providers.AcademiaIconProvider">
+         <Priority name="Low"/>
+      </IconProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.parserProviders" id="parser-provider">
+      <?gmfgen generated="true"?>
+      <ParserProvider class="Academia.diagram.providers.AcademiaParserProvider">
+         <Priority name="Lowest"/>
+      </ParserProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes" id="element-types">
+      <?gmfgen generated="true"?>
+      <metamodel nsURI="Academia">
+         <metamodelType
+               id="Academia.diagram.APackage_1000"
+               name="%metatype.name.APackage_1000"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="APackage"
+               edithelper="Academia.diagram.edit.helpers.APackageEditHelper">
+            <param name="semanticHint" value="1000"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <metamodelType
+               id="Academia.diagram.AApplication_2001"
+               name="%metatype.name.AApplication_2001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="AApplication"
+               edithelper="Academia.diagram.edit.helpers.AApplicationEditHelper">
+            <param name="semanticHint" value="2001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <metamodelType
+               id="Academia.diagram.Matricula_2002"
+               name="%metatype.name.Matricula_2002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Matricula"
+               edithelper="Academia.diagram.edit.helpers.MatriculaEditHelper">
+            <param name="semanticHint" value="2002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <metamodelType
+               id="Academia.diagram.Aluno_2003"
+               name="%metatype.name.Aluno_2003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Aluno"
+               edithelper="Academia.diagram.edit.helpers.AlunoEditHelper">
+            <param name="semanticHint" value="2003"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <metamodelType
+               id="Academia.diagram.Curso_2004"
+               name="%metatype.name.Curso_2004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Curso"
+               edithelper="Academia.diagram.edit.helpers.CursoEditHelper">
+            <param name="semanticHint" value="2004"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <metamodelType
+               id="Academia.diagram.Departamento_2005"
+               name="%metatype.name.Departamento_2005"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Departamento"
+               edithelper="Academia.diagram.edit.helpers.DepartamentoEditHelper">
+            <param name="semanticHint" value="2005"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <metamodelType
+               id="Academia.diagram.Campus_2006"
+               name="%metatype.name.Campus_2006"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Campus"
+               edithelper="Academia.diagram.edit.helpers.CampusEditHelper">
+            <param name="semanticHint" value="2006"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <metamodelType
+               id="Academia.diagram.DisciplinaSemestre_2007"
+               name="%metatype.name.DisciplinaSemestre_2007"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="DisciplinaSemestre"
+               edithelper="Academia.diagram.edit.helpers.DisciplinaSemestreEditHelper">
+            <param name="semanticHint" value="2007"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <metamodelType
+               id="Academia.diagram.DisciplinaPaga_2008"
+               name="%metatype.name.DisciplinaPaga_2008"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="DisciplinaPaga"
+               edithelper="Academia.diagram.edit.helpers.DisciplinaPagaEditHelper">
+            <param name="semanticHint" value="2008"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <metamodelType
+               id="Academia.diagram.DisciplinaGratis_2009"
+               name="%metatype.name.DisciplinaGratis_2009"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="DisciplinaGratis"
+               edithelper="Academia.diagram.edit.helpers.DisciplinaGratisEditHelper">
+            <param name="semanticHint" value="2009"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <metamodelType
+               id="Academia.diagram.AAttribute_3001"
+               name="%metatype.name.AAttribute_3001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="AAttribute"
+               edithelper="Academia.diagram.edit.helpers.AAttributeEditHelper">
+            <param name="semanticHint" value="3001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <metamodelType
+               id="Academia.diagram.AOperation_3002"
+               name="%metatype.name.AOperation_3002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="AOperation"
+               edithelper="Academia.diagram.edit.helpers.AOperationEditHelper">
+            <param name="semanticHint" value="3002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <metamodelType
+               id="Academia.diagram.AParameter_3003"
+               name="%metatype.name.AParameter_3003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="AParameter"
+               edithelper="Academia.diagram.edit.helpers.AParameterEditHelper">
+            <param name="semanticHint" value="3003"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AAttribute_3004"
+               name="%metatype.name.AAttribute_3004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AAttribute_3001"/>
+            <param name="semanticHint" value="3004"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AOperation_3005"
+               name="%metatype.name.AOperation_3005"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AOperation_3002"/>
+            <param name="semanticHint" value="3005"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AParameter_3006"
+               name="%metatype.name.AParameter_3006"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AParameter_3003"/>
+            <param name="semanticHint" value="3006"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AAttribute_3007"
+               name="%metatype.name.AAttribute_3007"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AAttribute_3001"/>
+            <param name="semanticHint" value="3007"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AOperation_3008"
+               name="%metatype.name.AOperation_3008"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AOperation_3002"/>
+            <param name="semanticHint" value="3008"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AParameter_3009"
+               name="%metatype.name.AParameter_3009"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AParameter_3003"/>
+            <param name="semanticHint" value="3009"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AAttribute_3010"
+               name="%metatype.name.AAttribute_3010"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AAttribute_3001"/>
+            <param name="semanticHint" value="3010"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AOperation_3011"
+               name="%metatype.name.AOperation_3011"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AOperation_3002"/>
+            <param name="semanticHint" value="3011"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AParameter_3012"
+               name="%metatype.name.AParameter_3012"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AParameter_3003"/>
+            <param name="semanticHint" value="3012"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AAttribute_3013"
+               name="%metatype.name.AAttribute_3013"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AAttribute_3001"/>
+            <param name="semanticHint" value="3013"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AOperation_3014"
+               name="%metatype.name.AOperation_3014"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AOperation_3002"/>
+            <param name="semanticHint" value="3014"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AParameter_3015"
+               name="%metatype.name.AParameter_3015"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AParameter_3003"/>
+            <param name="semanticHint" value="3015"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AAttribute_3016"
+               name="%metatype.name.AAttribute_3016"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AAttribute_3001"/>
+            <param name="semanticHint" value="3016"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AOperation_3017"
+               name="%metatype.name.AOperation_3017"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AOperation_3002"/>
+            <param name="semanticHint" value="3017"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AParameter_3018"
+               name="%metatype.name.AParameter_3018"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AParameter_3003"/>
+            <param name="semanticHint" value="3018"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AAttribute_3019"
+               name="%metatype.name.AAttribute_3019"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AAttribute_3001"/>
+            <param name="semanticHint" value="3019"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AOperation_3020"
+               name="%metatype.name.AOperation_3020"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AOperation_3002"/>
+            <param name="semanticHint" value="3020"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AParameter_3021"
+               name="%metatype.name.AParameter_3021"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AParameter_3003"/>
+            <param name="semanticHint" value="3021"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AAttribute_3022"
+               name="%metatype.name.AAttribute_3022"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AAttribute_3001"/>
+            <param name="semanticHint" value="3022"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AOperation_3023"
+               name="%metatype.name.AOperation_3023"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AOperation_3002"/>
+            <param name="semanticHint" value="3023"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AParameter_3024"
+               name="%metatype.name.AParameter_3024"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="Academia.diagram.AParameter_3003"/>
+            <param name="semanticHint" value="3024"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="Academia">
+         <specializationType
+               id="Academia.diagram.AClassifierAChilds_4001"
+               name="%metatype.name.AClassifierAChilds_4001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
+            <param name="semanticHint" value="4001"/>
+         </specializationType>
+      </metamodel>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings" id="element-types-bindings">
+      <?gmfgen generated="true"?>
+      <clientContext id="Academia.diagram.TypeContext">
+         <enablement>
+            <test
+               property="org.eclipse.gmf.runtime.emf.core.editingDomain"
+               value="Academia.diagram.EditingDomain"/>
+         </enablement>
+      </clientContext> 
+      <binding context="Academia.diagram.TypeContext">
+         <elementType ref="Academia.diagram.APackage_1000"/>
+         <elementType ref="Academia.diagram.AApplication_2001"/>
+         <elementType ref="Academia.diagram.Matricula_2002"/>
+         <elementType ref="Academia.diagram.Aluno_2003"/>
+         <elementType ref="Academia.diagram.Curso_2004"/>
+         <elementType ref="Academia.diagram.Departamento_2005"/>
+         <elementType ref="Academia.diagram.Campus_2006"/>
+         <elementType ref="Academia.diagram.DisciplinaSemestre_2007"/>
+         <elementType ref="Academia.diagram.DisciplinaPaga_2008"/>
+         <elementType ref="Academia.diagram.DisciplinaGratis_2009"/>
+         <elementType ref="Academia.diagram.AAttribute_3001"/>
+         <elementType ref="Academia.diagram.AOperation_3002"/>
+         <elementType ref="Academia.diagram.AParameter_3003"/>
+         <elementType ref="Academia.diagram.AAttribute_3004"/>
+         <elementType ref="Academia.diagram.AOperation_3005"/>
+         <elementType ref="Academia.diagram.AParameter_3006"/>
+         <elementType ref="Academia.diagram.AAttribute_3007"/>
+         <elementType ref="Academia.diagram.AOperation_3008"/>
+         <elementType ref="Academia.diagram.AParameter_3009"/>
+         <elementType ref="Academia.diagram.AAttribute_3010"/>
+         <elementType ref="Academia.diagram.AOperation_3011"/>
+         <elementType ref="Academia.diagram.AParameter_3012"/>
+         <elementType ref="Academia.diagram.AAttribute_3013"/>
+         <elementType ref="Academia.diagram.AOperation_3014"/>
+         <elementType ref="Academia.diagram.AParameter_3015"/>
+         <elementType ref="Academia.diagram.AAttribute_3016"/>
+         <elementType ref="Academia.diagram.AOperation_3017"/>
+         <elementType ref="Academia.diagram.AParameter_3018"/>
+         <elementType ref="Academia.diagram.AAttribute_3019"/>
+         <elementType ref="Academia.diagram.AOperation_3020"/>
+         <elementType ref="Academia.diagram.AParameter_3021"/>
+         <elementType ref="Academia.diagram.AAttribute_3022"/>
+         <elementType ref="Academia.diagram.AOperation_3023"/>
+         <elementType ref="Academia.diagram.AParameter_3024"/>
+         <elementType ref="Academia.diagram.AClassifierAChilds_4001"/>
+         <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
+      </binding>
+   </extension>
+	   <extension point="org.eclipse.core.expressions.propertyTesters" id="navigator-proptest.isURIEditorInput">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="Academia.diagram.URIEditorInputPropertyTester"
+           type="org.eclipse.emf.common.ui.URIEditorInput"
+           namespace="Academia.diagram"
+           properties="isURIEditorInput"
+           class="Academia.diagram.part.AcademiaUriEditorInputTester">
+       </propertyTester>
+   </extension>
+
+	   <extension point="org.eclipse.ui.navigator.viewer" id="navigator-viewbinding">
+      <?gmfgen generated="true"?>
+      <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension pattern="Academia.diagram.resourceContent"/>
+			<contentExtension pattern="Academia.diagram.domainResourceContent"/>
+            <contentExtension pattern="Academia.diagram.navigatorLinkHelper"/>
+         </includes>
+      </viewerContentBinding>
+      <viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <actionExtension pattern="Academia.diagram.navigatorActionProvider"/>
+         </includes>
+      </viewerActionBinding>
+   </extension>
+
+   <extension point="org.eclipse.ui.navigator.navigatorContent" id="navigator-content">
+      <?gmfgen generated="true"?>
+      <navigatorContent
+            id="Academia.diagram.resourceContent" 
+            name="%navigatorContentName" 
+            priority="normal" 
+            contentProvider="Academia.diagram.navigator.AcademiaNavigatorContentProvider" 
+            labelProvider="Academia.diagram.navigator.AcademiaNavigatorLabelProvider"
+            icon="icons/obj16/AcademiaDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="academia_diagram"/>
+               </and>
+               <instanceof value="Academia.diagram.navigator.AcademiaAbstractNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+         	   <instanceof value="Academia.diagram.navigator.AcademiaAbstractNavigatorItem"/>
+            </or>
+         </possibleChildren>
+         <commonSorter 
+               id="Academia.diagram.navigatorSorter" 
+               class="Academia.diagram.navigator.AcademiaNavigatorSorter">
+            <parentExpression>
+               <or>
+	              <and>
+    	             <instanceof value="org.eclipse.core.resources.IFile"/>
+        	         <test property="org.eclipse.core.resources.extension" value="academia_diagram"/>
+                  </and>
+                  <instanceof value="Academia.diagram.navigator.AcademiaAbstractNavigatorItem"/>
+               </or>
+            </parentExpression>
+         </commonSorter>
+      </navigatorContent>
+      <navigatorContent
+            id="Academia.diagram.domainResourceContent" 
+            name="%domainNavigatorContentName" 
+            priority="normal" 
+            contentProvider="Academia.diagram.navigator.AcademiaDomainNavigatorContentProvider" 
+            labelProvider="Academia.diagram.navigator.AcademiaDomainNavigatorLabelProvider"
+            icon="icons/obj16/AcademiaDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="academia"/>
+               </and>
+               <instanceof value="Academia.diagram.navigator.AcademiaDomainNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <instanceof value="Academia.diagram.navigator.AcademiaDomainNavigatorItem"/>
+         </possibleChildren>
+      </navigatorContent>
+      <actionProvider
+            id="Academia.diagram.navigatorActionProvider"
+            class="Academia.diagram.navigator.AcademiaNavigatorActionProvider">
+         <enablement>
+            <or>
+               <instanceof value="Academia.diagram.navigator.AcademiaAbstractNavigatorItem"/>
+            </or>
+         </enablement>
+      </actionProvider>
+   </extension>
+   
+	   <extension point="org.eclipse.ui.navigator.linkHelper" id="navigator-linkhelper">
+      <?gmfgen generated="true"?>
+      <linkHelper
+            id="Academia.diagram.navigatorLinkHelper"
+            class="Academia.diagram.navigator.AcademiaNavigatorLinkHelper">
+         <editorInputEnablement>
+            <and>
+               <instanceof value="org.eclipse.emf.common.ui.URIEditorInput"/>
+               <test property="Academia.diagram.isURIEditorInput"/>
+            </and>
+         </editorInputEnablement>
+         <selectionEnablement>
+            <instanceof value="Academia.diagram.navigator.AcademiaAbstractNavigatorItem"/>
+         </selectionEnablement>
+      </linkHelper>
+   </extension>
+   <extension point="org.eclipse.ui.commands" id="update-cmd">
+      <?gmfgen generated="true"?>
+      <command
+         categoryId="org.eclipse.ui.category.edit"
+         defaultHandler="Academia.diagram.part.AcademiaDiagramUpdateCommand"
+         description="%update.diagram.description"
+         id="Academia.diagram.updateDiagram"
+         name="%update.diagram.name"/>
+   </extension>
+   
+   <extension point="org.eclipse.ui.bindings" id="update-cmd-binding">
+      <?gmfgen generated="true"?>
+      <key 
+         commandId="Academia.diagram.updateDiagram"
+         contextId="Academia.diagram.ui.diagramContext"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="F5"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.menus" id="context-menus">
+      <?gmfgen generated="true"?>
+      <!-- menuContribution locationURI="menu:org.eclipse.ui.main.menu?after=">
+      </menuContribution>
+      <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=">
+      </menuContribution -->
+      <menuContribution locationURI="popup:org.eclipse.gmf.runtime.diagram.ui.DiagramEditorContextMenu">
+         <command commandId="Academia.diagram.LoadResourceAction">
+            <visibleWhen>
+               <and>
+                  <with variable="activePartId"><equals value="Academia.diagram.part.AcademiaDiagramEditorID"/></with>
+                  <with variable="selection"><iterate ifEmpty="false"> 
+                     <instanceof value="Academia.diagram.edit.parts.APackageEditPart"/>
+                  </iterate></with>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands" id="menu-commands">
+      <?gmfgen generated="true"?>
+      <category id="Academia.diagram.part.AcademiaDiagramEditorID" name="%cmdcategory.name" description="%cmdcategory.desc"/>
+      <command id="Academia.diagram.LoadResourceAction"
+         name="Load Resource"
+         categoryId="Academia.diagram.part.AcademiaDiagramEditorID"
+         defaultHandler="Academia.diagram.part.LoadResourceAction"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.handlers" id="menu-handlers">
+      <?gmfgen generated="true"?>
+   </extension>
+
+   <!-- optionally, specify keybindings -->
+</plugin>

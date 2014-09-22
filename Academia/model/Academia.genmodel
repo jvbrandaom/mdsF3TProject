@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Academia/src"
+    modelPluginID="Academia" modelName="Academia" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>Academia.ecore</foreignModel>
+  <genPackages prefix="Academia" disposableProviderFactory="true" ecorePackage="Academia.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Academia.ecore#//PersistenceStrategy">
+      <genEnumLiterals ecoreEnumLiteral="Academia.ecore#//PersistenceStrategy/Java"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Academia.ecore#//LoggingStrategy">
+      <genEnumLiterals ecoreEnumLiteral="Academia.ecore#//LoggingStrategy/PropertiesFile"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="Academia.ecore#//ABoundedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//ABoundedElement/lowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//ABoundedElement/upperBound"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Academia.ecore#//ADocumentatedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//ADocumentatedElement/documentation"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Academia.ecore#//AModeledElement"/>
+    <genClasses image="false" ecoreClass="Academia.ecore#//ANamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//ANamedElement/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Academia.ecore#//ATypedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//ATypedElement/typeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//ATypedElement/changeable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//ATypedElement/singleton"/>
+    </genClasses>
+    <genClasses ecoreClass="Academia.ecore#//APackage">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//APackage/domain"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//APackage/dProject"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Academia.ecore#//APackage/aClassifiers"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Academia.ecore#//AClassifier">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AClassifier/TYPE"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Academia.ecore#//AClassifier/aChilds"/>
+    </genClasses>
+    <genClasses ecoreClass="Academia.ecore#//AApplication">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AApplication/persistenceStrategy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AApplication/loggingStrategy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AApplication/databaseUser"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AApplication/databasePassword"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Academia.ecore#//AFeature">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AFeature/stereo"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Academia.ecore#//AFeature/aParent"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AFeature/aAllParents"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AFeature/providedAttributes"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AFeature/attributesSQL"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AFeature/multipleFields"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AFeature/associations"/>
+    </genClasses>
+    <genClasses ecoreClass="Academia.ecore#//AObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AObject/abstract"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Academia.ecore#//AObject/aAttributes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Academia.ecore#//AObject/aOperations"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AObject/primaryKey"/>
+    </genClasses>
+    <genClasses ecoreClass="Academia.ecore#//AVariation">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AFeature/localAttributes"/>
+    </genClasses>
+    <genClasses ecoreClass="Academia.ecore#//AAttribute">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Academia.ecore#//AAttribute/aContainer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AAttribute/defaultValueLiteral"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Academia.ecore#//AAttribute/unique"/>
+    </genClasses>
+    <genClasses ecoreClass="Academia.ecore#//AOperation">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Academia.ecore#//AOperation/aContainer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Academia.ecore#//AOperation/aParameters"/>
+    </genClasses>
+    <genClasses ecoreClass="Academia.ecore#//AParameter">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Academia.ecore#//AParameter/aContainer"/>
+    </genClasses>
+    <genClasses  ecoreClass="Academia.ecore#//Matricula" >
+    </genClasses>
+    <genClasses  ecoreClass="Academia.ecore#//Aluno" >
+    </genClasses>
+    <genClasses  ecoreClass="Academia.ecore#//Curso" >
+    </genClasses>
+    <genClasses  ecoreClass="Academia.ecore#//Departamento" >
+    </genClasses>
+    <genClasses image="false" ecoreClass="Academia.ecore#//Disciplina" >
+    </genClasses>
+    <genClasses  ecoreClass="Academia.ecore#//Campus" >
+    </genClasses>
+    <genClasses  ecoreClass="Academia.ecore#//DisciplinaSemestre" >
+    </genClasses>
+    <genClasses  ecoreClass="Academia.ecore#//DisciplinaPaga" >
+    </genClasses>
+    <genClasses  ecoreClass="Academia.ecore#//DisciplinaGratis" >
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

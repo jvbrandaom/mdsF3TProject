@@ -1,0 +1,7 @@
+# Tracing options for the Academia.diagram plug-in
+
+# Common issues
+Academia.diagram/debug=false
+
+# Visual IDs
+Academia.diagram/debug/visualID=false
