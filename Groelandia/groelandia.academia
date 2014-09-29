@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Academia:APackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Academia="Academia">
+  <aClassifiers xsi:type="Academia:AApplication" aChilds="//@aClassifiers.3" name="Groelandia"/>
+  <aClassifiers xsi:type="Academia:Aluno" aParent="//@aClassifiers.3" name="GAluno"/>
+  <aClassifiers xsi:type="Academia:Curso" aChilds="//@aClassifiers.4 //@aClassifiers.6" name="GCurso"/>
+  <aClassifiers xsi:type="Academia:Matricula" documentation="" aChilds="//@aClassifiers.5 //@aClassifiers.1" aParent="//@aClassifiers.0" name="GMatricula"/>
+  <aClassifiers xsi:type="Academia:DisciplinaGratis" aParent="//@aClassifiers.2" name="GDisciplinaGratis"/>
+  <aClassifiers xsi:type="Academia:DisciplinaSemestre" aParent="//@aClassifiers.3" name="GDisciplinaSemestre"/>
+  <aClassifiers xsi:type="Academia:Departamento" aParent="//@aClassifiers.2" name="GDepartamento"/>
+</Academia:APackage>
