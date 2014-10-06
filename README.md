@@ -15,4 +15,4 @@ Matrícula é uma transação que registra os alunos nas disciplinas. Uma matric
 
 ### Universidade da Groelandia
 
-Sistema de matriculas para a Universidade da Groelandia.
+O sistema de matrículas para a Universidade da Groelandia é a aplicação escolhida. Este sistema consiste de 6 (seis) arquivos: GAluno, que extende a classe Aluno gerada pelo framework, que possui um Curso; GCurso, que extende a classe Curso, gerada pelo framework, e GCurso possui Disciplnas e um departamento; GDepartamento, que extende a classe Departamento, gerada pelo framework; GDisciplina Gratis, que extende a classe DisciplinaGratis, que foi geirada pelo framework, que possui DisiplinasSemestre e Departamento; GDisciplinaSemestre, que extende a classe DisciplinaSemestre; e GMatricula, que extende a classe Matricula, e possui DisciplinaSemestre e Aluno. Esta aplicação permite que um objeto aluno da classe GAluno possa se matricular em disciplinas (da classe GDisciplinaSemstre) que são abertas no semestre, sejam essas disciplinas gratuitas ou não, que estão vinculadas a um departamento. Essa aplicação possui persistência de dados e utiliza o SGBD MySQL + o driver jdbc.
